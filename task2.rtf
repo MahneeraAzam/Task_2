@@ -1,0 +1,194 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Landing Page \line Key sections in the layout:\par
+Hero: Likely a banner or introductory section that highlights key information or promotions.\par
+FeaturedProducts: Displays featured products, possibly with images and prices, to catch the user's attention.\par
+LatestProject: Shows the most recent project or updates.\par
+NewsletterAndBlog: Includes sections for subscribing to a newsletter and browsing blog posts or updates.\line Structure:\par
+Section Layout:\par
+The section is wrapped in a container with padding for spacing. It displays a heading and a grid of products below it.\par
+Grid Layout:\par
+The products are displayed in a responsive grid. On smaller screens, it displays one product per row. On medium (md) screens, it shows two products per row, and on larger screens (lg), four products per row.\par
+Product Card:\par
+Each product is contained within a Card component, and the product information is styled with padding and text alignment.\par
+Inside each product card, there is an image, a hoverable action button (for shopping cart, wishlist, or search), product name, color options, product code, and price.\par
+Hover Actions:\par
+\par
+The hover actions (shopping cart, heart, search) are initially hidden (opacity-0) and appear only when the user hovers over the product card (group-hover:opacity-100).\par
+Product Colors:\par
+\par
+Each product has color options displayed as small colored circles.\par
+Customization/Enhancements:\par
+Dynamic Data: You can extend this with additional product data like description, categories, or ratings.\par
+Button Functionality: The buttons for cart, wishlist, and search can be wired up to their respective functionalities (e.g., adding to cart, adding to wishlist, or opening a modal for product details).\par
+Responsive Design: The grid layout is fully responsive, adjusting automatically based on screen size.\par
+\par
+\par
+\b [Frontend (Next.js)]  --->  [Sanity CMS]  ---> [Backend (API)]  ---> [Database]\par
+      |                               |\par
+      |                               v\par
+      v                           [3rd Party APIs]\par
+[Static Assets (e.g., Images)] \line\line\line\b0 Breakdown of Components:\par
+Frontend (Next.js):\par
+This is the core of your application, which handles the user interface and client-side logic. It fetches data from Sanity CMS, the Backend API, and 3rd party APIs to render dynamic content such as products, blogs, and project details.\par
+Features:\par
+Product Grid: Fetches product data and displays it.\par
+Contact Us Page: Provides a form for users to get in touch.\par
+Homepage: Renders Hero, Featured Products, Latest Projects, and Newsletter sections.\par
+Product Detail Page: Displays detailed product information.\par
+Sanity CMS:\par
+A headless content management system that stores and manages content such as products, blogs, pages, etc.\par
+Features:\par
+Product Information: Manages product details like name, price, description, and images.\par
+Blog Posts: Manages content for blog posts (if any).\par
+Pages: Manages content for static pages like About Us, Contact Us, etc.\par
+Backend (API):\par
+\par
+The backend API serves as the interface between your Next.js frontend and other systems, including the database or third-party services.\par
+Features:\par
+User Authentication: Handles user login/signup, potentially through JWT or other methods.\par
+Order Management: Handles the shopping cart, order creation, and checkout.\par
+Dynamic Data Handling: Fetches dynamic data such as prices, stock, and special offers from the database or 3rd party APIs.\par
+\par
+\par
+Database:\par
+Stores your application data like user information, product data, orders, etc.\par
+Examples of databases include MongoDB, PostgreSQL, or MySQL.\par
+3rd Party APIs:\par
+\par
+These are external services integrated into your system, such as payment gateways, shipping APIs, or product recommendations.\par
+Features:\par
+Payment Gateway: Handles transactions for order checkout.\par
+Shipping API: Provides real-time shipping costs and delivery estimates.\par
+External Product API: Fetches external product data or recommendations.\par
+Static Assets (e.g., Images):\par
+\par
+Images, icons, and other static assets used in your frontend are stored either in your project or via an external service like a CDN.\par
+This can include product images, logos, and other media used in the application.\par
+Data Flow:\par
+Frontend (Next.js) communicates with:\par
+\par
+Sanity CMS to fetch content like product details, blog posts, and other structured content.\par
+Backend API to manage user sessions, orders, and other dynamic content.\par
+3rd Party APIs for external data such as payment processing or shipping.\par
+Backend (API) interacts with:\par
+\par
+Database for storing and fetching user orders, product info, and other business data.\par
+3rd Party APIs for payment processing and shipping information.\par
+Sanity CMS provides dynamic content that is rendered on the frontend of the application, like products and blog posts.\line\line\par
+Suggestions for Improvement:\par
+Product Data:\par
+\par
+You can integrate product data dynamically from a CMS or API instead of using a static array. For instance, fetching products from Sanity CMS or a database could make this component more flexible.\par
+Accessibility:\par
+\par
+Adding more accessibility features, such as aria-label attributes to buttons and images, would improve the overall user experience.\par
+Styling:\par
+\par
+If you plan on using a design system, consider creating reusable components (e.g., ProductCard, HoverActions) to make the code more maintainable.\par
+Actions:\par
+\par
+You can add functionality to the hover actions (e.g., adding a product to the cart, or toggling a favorite state). You can manage the state for these actions using React hooks like useState.\par
+\b\par
+\b0 1. User Registration:\par
+User signs up:\par
+User inputs their information (name, email, password, etc.) on the registration page.\par
+Form validation and error handling are performed on the frontend.\par
+The data is then sent to the backend (Next.js API route or server) via an API call.\par
+Data is stored in Sanity CMS:\par
+The backend sends the registration data to Sanity CMS or a custom database to store the user\rquote s information.\par
+Confirmation sent to the user:\par
+Upon successful registration, a confirmation email is sent to the user, including a verification link or a welcome message.\par
+2. Product Browsing:\par
+User views product categories:\par
+The user navigates to the product browsing section of the site, where they can filter by categories, prices, or other attributes.\par
+Sanity API fetches data:\par
+The frontend (Next.js pages/components) makes an API request to Sanity CMS (or any external API) to retrieve product data such as images, descriptions, prices, and available stock.\par
+Products displayed on frontend:\par
+The fetched product data is displayed on the website in product cards (like in your FeaturedProducts component), sorted according to the user\rquote s preferences (e.g., by category, price, or featured status).\par
+3. Order Placement:\par
+User adds items to the cart:\par
+As the user browses products, they can add items to their shopping cart. The cart is managed via React state or a global state management tool (e.g., Redux or Context API).\par
+User proceeds to checkout:\par
+Once the user is ready, they can proceed to the checkout page, where they review their order and input necessary details (e.g., shipping address, payment method).\par
+Order details saved in Sanity:\par
+After the user confirms their order, the order details (items, total price, shipping address, etc.) are saved in Sanity CMS or a backend database.\par
+Order confirmation (with an order number) is displayed to the user, and an email with the order details is sent to them.\par
+4. Shipment Tracking:\par
+Order status updates fetched via 3rd-party API:\par
+The backend can integrate with a shipment tracking API (like UPS, FedEx, or other 3rd-party services) to track the order\rquote s shipment status.\par
+Every time the shipment status is updated (e.g., "shipped", "in transit", "delivered"), the new information is fetched and stored.\par
+Shipment status displayed to the user:\par
+The frontend regularly fetches the latest shipment status from the backend or 3rd-party API and displays it on the user\rquote s order details page, so the user can track their shipment in real-time\b .\par
+\par
+Extended Example Workflow:\par
+1. User Registration Workflow:\par
+Frontend: User fills out a registration form.\par
+Frontend API call: The registration data is sent to the backend (Next.js API route).\par
+Backend: Validates the data and stores it in Sanity CMS (or a database).\par
+Sanity CMS/Database: Stores user details (name, email, etc.).\par
+Email Service: Sends a confirmation or welcome email to the user.\par
+2. Product Browsing Workflow:\par
+Frontend: User browses product categories (e.g., chairs, tables, etc.).\par
+Sanity API: Fetches products from Sanity CMS (or any other API).\par
+Frontend: Displays products dynamically in a responsive grid layout (using your FeaturedProducts component).\par
+3. Order Placement Workflow:\par
+Frontend: User adds products to the cart.\par
+Frontend State Management: The cart state is updated.\par
+Frontend: User proceeds to checkout and enters shipping/payment details.\par
+Sanity CMS/Database: Order details are saved, including product items, quantity, shipping address, total price.\par
+Frontend: Displays order confirmation to the user with order number.\par
+Email Service: Sends an order confirmation email to the user.\par
+4. Shipment Tracking Workflow:\par
+Frontend: User checks the status of their order.\par
+Backend: Fetches tracking details from a 3rd-party shipping API (like UPS, FedEx).\par
+Frontend: Displays real-time shipment tracking status (e.g., \ldblquote shipped\rdblquote , \ldblquote in transit\rdblquote , \ldblquote delivered\rdblquote ).\par
+Diagram Representation:\par
+plaintext\par
+Copy\par
+Edit\par
+[Frontend (Next.js)] \par
+    |     |       |        |\par
+    V     V       V        V\par
+[Sanity CMS]   [Email Service]   [3rd-Party APIs (e.g., Shipment API)]\par
+Detailed Workflow with Components:\par
+User Registration:\par
+\par
+RegistrationForm -> API Route (POST /register) -> Sanity CMS -> Email Service\par
+Product Browsing:\par
+\par
+ProductPage -> Sanity API (GET /products) -> FeaturedProducts\par
+Order Placement:\par
+\par
+CartPage -> Cart Context -> CheckoutPage -> API Route (POST /order) -> Sanity CMS\par
+Shipment Tracking:\par
+\par
+OrderStatusPage -> Backend (GET /shipment-status) -> 3rd-Party API (Shipment API) -> Frontend\par
+\b0\par
+1. API Requirements\par
+Endpoint Name: /products\par
+Method: GET\par
+Description: Fetch all available products from Sanity.\line Endpoint Name: /product/\{id\}\par
+Method: GET\par
+Description: Fetch a specific product's details from Sanity by product ID.\par
+Endpoint Name: /orders\par
+Method: POST\par
+Description: Create a new order in Sanity.\par
+Method: GET\par
+Description: Fetch details of a specific order by order ID from Sanity.\par
+\par
+Endpoint Name: /shipment/\{order_id\}\par
+Method: GET\par
+Description: Track order shipment status via a third-party API (e.g., UPS, FedEx).\par
+Endpoint Name: /payment\par
+Method: POST\par
+Description: Handle payment processing for an order (e.g., integrating with a payment provider like Stripe, PayPal).\par
+\line\b API Documentation Summary:\par
+/products: Fetches all product details.\par
+/product/\{id\}: Fetches details of a specific product by its ID.\par
+/orders: Creates a new order.\par
+/order/\{order_id\}: Fetches a specific order's details by its ID.\par
+/shipment/\{order_id\}: Fetches shipment tracking information for a specific order.\par
+/payment: Processes payment for an order.\par
+}
+ 
